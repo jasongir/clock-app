@@ -13,11 +13,13 @@ const DetailsScreen = (props) => {
 					<Text style={{ color: "blue", fontSize: 30 }}>Go Home!</Text>
 				</View>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={() => props.navigation.push("Details")}>
+			{/*
+         <TouchableOpacity onPress={() => props.navigation.push("Details")}>
 				<View style={{ backgroundColor: "green", padding: 5 }}>
 					<Text style={{ color: "blue", fontSize: 30 }}>Return to details</Text>
 				</View>
 			</TouchableOpacity>
+         */}
 			<TouchableOpacity onPress={() => props.navigation.goBack()}>
 				<View style={{ backgroundColor: "orange", padding: 5 }}>
 					<Text style={{ color: "blue", fontSize: 30 }}>Go back!</Text>
