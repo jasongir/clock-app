@@ -2,107 +2,54 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import SearchHeader from "./components/HomeScreen/SearchHeader";
+import FeatureImage from "./components/HomeScreen/FeatureImage";
+import ScrollingView from "./components/ScrollView";
+
+// import ScrollLabSolution from "./components/ScrollLabSolution";
+
 import Constants from "expo-constants";
 
-export default class App extends React.Component {
-	render() {
-		return (
-			<View
-				style={{
-					flex: 1,
-					flexDirection: "row", // column, row
-					justifyContent: "space-between", // flex-end, flex-start, space-between, space-around
-					alignItems: "center", //   ^ and space-evenly
-					backgroundColor: "purple",
-				}}
-			>
-				<LinearGradient
-					colors={["#000", "#fff"]}
-					// end={{ x: 0.1, y: 0.2 }}
-					// end={{ x: 0.1, y: 0.2 }}
-
-					style={{ flex: 1 }}
-				>
-					<Text
-						style={{
-							padding: 20,
-						}}
-					>
-						Sign in or something
-					</Text>
-				</LinearGradient>
-				<View
-					style={{
-						backgroundColor: "red",
-						width: "25%",
-						height: 100,
-					}}
-				/>
-				<View
-					style={{
-						backgroundColor: "blue",
-						width: "25%",
-						height: 100,
-					}}
-				/>
-				<View
-					style={{
-						backgroundColor: "green",
-						width: 100,
-						height: 100,
-					}}
-				/>
-			</View>
-		);
-	}
-}
+const App = () => {
+	return (
+		<View>
+			<Text>
+				CAN YOU PLEASE WORK FOR ONCE Lorem ipsum dolor, sit amet consectetur
+				adipisicing elit. Nisi corporis eius similique sint ad soluta numquam
+				culpa dolore dolores cupiditate! Atque nihil ipsa voluptatem,
+				perspiciatis quidem illo modi, hic voluptatibus eum quisquam id nemo
+				consectetur eius quae quaerat ipsam? Sint cum saepe accusamus iusto, sit
+				necessitatibus at. Molestias, incidunt dolorum.
+			</Text>
+		</View>
+	);
+	// return (
+	// 	<View style={styles.container}>
+	// 		<SearchHeader />
+	// 		<Text style={styles.text}>Welcome...</Text>
+	// 		<FeatureImage />
+	// 		<ScrollingView />
+	// 	</View>
+	// );
+	// return <ScrollLabSolution />;
+};
+export default App;
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: "black",
+		alignItems: "center",
+		justifyContent: "flex-start",
+	},
+	upperContainer: {
+		flex: 1,
+		backgroundColor: "#000",
 		alignItems: "center",
 		justifyContent: "center",
+		paddingTop: Constants.statusBarHeight,
+	},
+	text: {
+		color: "white",
 	},
 });
-// import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-// import { LinearGradient } from 'expo-linear-gradient';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-
-//       <LinearGradient
-//         colors={['#FFFFFF', '#535C5B', '#000D0C']}
-//         start ={[1,1]}
-//         end = {[0.6, 0.7]}
-//         style={{
-//           flex: 1,
-//           flexDirection: 'column',
-//            width: "100%",
-//           justifyContent: 'center',
-//           alignItems: 'center',
-//         }}>
-//         <Text
-//           style={{
-//             fontFamily: "Helvetica-Bold",
-//             fontSize: 40,
-//             color: "#D5D7D7",
-//           }}>
-//           AckeePod
-//           </Text>
-//       </LinearGradient>
-
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
