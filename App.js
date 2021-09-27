@@ -1,71 +1,108 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
 import Constants from "expo-constants";
 
 export default class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			date: new Date(),
-		};
-	}
-
-	tick() {
-		this.setState({
-			date: new Date(),
-		});
-	}
-
-	componentDidMount() {
-		console.log("component did mount");
-
-		this.timer = setInterval(() => {
-			this.tick();
-		}, 1000);
-	}
-	componentWillUnmount() {
-		console.log("component will unmount");
-		clearInterval(this.timer);
-	}
 	render() {
-		let clockElement = (
-			<View style={styles.container}>
-				<Text>The Time is Now: {this.state.date.toLocaleDateString()}</Text>
+		return (
+			<View
+				style={{
+					flex: 1,
+					flexDirection: "row", // column, row
+					justifyContent: "space-between", // flex-end, flex-start, space-between, space-around
+					alignItems: "center", //   ^ and space-evenly
+					backgroundColor: "purple",
+				}}
+			>
+				<LinearGradient
+					colors={["#000", "#fff"]}
+					// end={{ x: 0.1, y: 0.2 }}
+					// end={{ x: 0.1, y: 0.2 }}
+
+					style={{ flex: 1 }}
+				>
+					<Text
+						style={{
+							padding: 20,
+						}}
+					>
+						Sign in or something
+					</Text>
+				</LinearGradient>
+				<View
+					style={{
+						backgroundColor: "red",
+						width: "25%",
+						height: 100,
+					}}
+				/>
+				<View
+					style={{
+						backgroundColor: "blue",
+						width: "25%",
+						height: 100,
+					}}
+				/>
+				<View
+					style={{
+						backgroundColor: "green",
+						width: 100,
+						height: 100,
+					}}
+				/>
 			</View>
 		);
-		return clockElement;
 	}
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
+		backgroundColor: "#fff",
 		alignItems: "center",
+		justifyContent: "center",
 	},
 });
-
-// import { StatusBar } from "expo-status-bar";
-// import React from "react";
-// import { StyleSheet, Text, View } from "react-native";
+// import React from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+// import { LinearGradient } from 'expo-linear-gradient';
 
 // export default function App() {
-//    let clockElement = <View style={styles.container}>
+//   return (
+//     <View style={styles.container}>
 
-//    </View>
-// 	return (
-// 		<View style={styles.container}>
-// 			<Text>This is app #1</Text>
-// 			<StatusBar style="auto" />
-// 		</View>
-// 	);
+//       <LinearGradient
+//         colors={['#FFFFFF', '#535C5B', '#000D0C']}
+//         start ={[1,1]}
+//         end = {[0.6, 0.7]}
+//         style={{
+//           flex: 1,
+//           flexDirection: 'column',
+//            width: "100%",
+//           justifyContent: 'center',
+//           alignItems: 'center',
+//         }}>
+//         <Text
+//           style={{
+//             fontFamily: "Helvetica-Bold",
+//             fontSize: 40,
+//             color: "#D5D7D7",
+//           }}>
+//           AckeePod
+//           </Text>
+//       </LinearGradient>
+
+//     </View>
+//   );
 // }
 
 // const styles = StyleSheet.create({
-// 	container: {
-// 		flex: 1,
-// 		backgroundColor: "#fff",
-// 		alignItems: "center",
-// 		justifyContent: "center",
-// 	},
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
 // });
