@@ -1,13 +1,14 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Button, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
+import * as Facebook from "expo-facebook";
 
 import DetailsScreen from "./screens-components/DetailsScreen.jsx";
 import HomeScreen from "./screens-components/HomeScreen.jsx";
 
-// import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import AppScreen from "./components/AppScreen/AppScreen";
+
 // https://reactnavigation.org/docs/tab-based-navigation
 
 import Constants from "expo-constants";
@@ -15,40 +16,38 @@ import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
 
 // const RootStack = createStackNavigator();
-const RootStack = createBottomTabNavigator();
 
-const App = () => {
-	return (
-		<NavigationContainer>
-			<RootStack.Navigator
-				initialRoutName="Home"
-				tabBarOptions={{
-					activeTintColor: "tomato",
-					inactiveTintColor: "gray",
-				}}
-				screenOptions={({ route }) => ({
-					// route: name of current screen
-					headerShown: false,
-					tabBarIcon: ({ focused, color, size }) => {
-						let iconName;
-						if (route.name === "Home") {
-							iconName = focused ? "ios-list-circle" : "ios-list-sharp";
-						} else if (route.name === "Details") {
-							iconName = focused
-								? "ios-information-circle"
-								: "ios-information-circle-outline";
-						}
-						// iconName = focused ? "ios-inf"
-						return <Ionicons name={iconName} size={size} color={color} />;
-					},
-				})}
-			>
-				<RootStack.Screen name="Home" component={HomeScreen} />
-				<RootStack.Screen name="Details" component={DetailsScreen} />
-			</RootStack.Navigator>
-		</NavigationContainer>
-	);
-};
+class App extends React.Component {
+	async logIn() {
+		try {
+			Facebook.initializeAsync({
+				appId: "280343767112876",
+				appName: "mobile-app-practice",
+			});
+			const { type, token, expires, permissions, declined } =
+				await Facebook.logInWithReadPermissionsAsync({
+					permissions: ["public_profile"],
+				});
+			if (type === "success") {
+				const response = await fetch(
+					`https://graph.facebook.com/me?access_token=${token}`
+				);
+				const object = await response.json();
+
+				Alert.alert(`Hey, ${object.name}`);
+			}
+		} catch ({ message }) {
+			console.log(message);
+		}
+	}
+	render() {
+		return (
+			<View style={styles.container}>
+				<Button title="Login with Facebook" onPress={() => this.logIn()} />
+			</View>
+		);
+	}
+}
 export default App;
 
 const styles = StyleSheet.create({
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "purple",
+		backgroundColor: "white",
 	},
 	text: {
 		color: "white",
